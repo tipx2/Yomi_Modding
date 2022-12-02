@@ -26,3 +26,6 @@ material = SubResource( 1 )
 
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 2 )
+animation = "Jump"
+frame = 0
+playing = true
