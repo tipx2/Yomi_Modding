@@ -1,0 +1,6 @@
+Copyright (C) 2022 Ian Sly <ivysly@protonmail.com>
+
+This file is part of the Yomi Hustle software.
+
+The Yomi Hustle project can not be copied and/or distributed without the express
+permission of Ian Sly <ivysly@protonmail.com>
