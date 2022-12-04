@@ -21,7 +21,7 @@ var name_paths = {
 	"Ninja":"res://characters/stickman/NinjaGuy.tscn", 
 	"Cowboy":"res://characters/swordandgun/SwordGuy.tscn", 
 	"Wizard":"res://characters/wizard/Wizard.tscn",
-	"Paladin":"res://characters/paladin/paladin.tscn"
+	"Paladin":"res://characters/paladin/paladin.tscn",
 
 }
 
