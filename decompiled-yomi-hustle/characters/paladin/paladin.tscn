@@ -326,7 +326,6 @@ material = SubResource( 2 )
 frames = SubResource( 3 )
 animation = "Wait"
 frame = 0
-playing = true
 
 [node name="UpwardSlash" type="Node2D" parent="StateMachine" index="36"]
 script = ExtResource( 81 )
@@ -348,19 +347,19 @@ GroundedAttack"
 interrupt_into_string = "Aerial"
 hit_cancel_into_string = "Aerial"
 GROUNDED_LIFT = "-10.0"
+AERIAL_LIFT = "-5.0"
 
 [node name="Hitbox1" type="Node2D" parent="StateMachine/UpwardSlash" index="0"]
 z_index = 1000
 script = ExtResource( 90 )
-x = 29
+x = 21
 y = -23
-width = 11
+width = 19
 height = 23
 damage = 90
 victim_hitlag = 10
 dir_x = "0.2"
 dir_y = "-0.7"
-knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 start_tick = 6
 active_ticks = 3
@@ -386,19 +385,19 @@ AerialAttack"
 interrupt_into_string = "Aerial"
 hit_cancel_into_string = "Aerial"
 GROUNDED_LIFT = "-10.0"
+AERIAL_LIFT = "-5.0"
 
 [node name="Hitbox1" type="Node2D" parent="StateMachine/UpwardSlashAir" index="0"]
 z_index = 1000
 script = ExtResource( 90 )
-x = 29
+x = 21
 y = -23
-width = 11
+width = 19
 height = 23
 damage = 90
 victim_hitlag = 10
 dir_x = "0.2"
 dir_y = "-0.7"
-knockback = "5.0"
 grounded_hit_state = "HurtAerial"
 start_tick = 6
 active_ticks = 3
