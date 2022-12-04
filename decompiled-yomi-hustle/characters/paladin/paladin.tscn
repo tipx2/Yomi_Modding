@@ -82,7 +82,7 @@
 [ext_resource path="res://characters/paladin/sprites/paladin_wait.png" type="Texture" id=80]
 [ext_resource path="res://characters/paladin/states/UpwardSlash.gd" type="Script" id=81]
 [ext_resource path="res://characters/paladin/sprites/paladin_UpwardSlash5.png" type="Texture" id=82]
-[ext_resource path="res://icon2.png" type="Texture" id=83]
+[ext_resource path="res://characters/paladin/sprites/actionicons/UpwardSlash.png" type="Texture" id=83]
 [ext_resource path="res://characters/paladin/sprites/paladin_UpwardSlash3.png" type="Texture" id=84]
 [ext_resource path="res://characters/paladin/sprites/paladin_UpwardSlash1.png" type="Texture" id=85]
 [ext_resource path="res://characters/paladin/sprites/paladin_UpwardSlash2.png" type="Texture" id=86]
@@ -306,7 +306,7 @@ animations = [ {
 "name": "Uppercut",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 85 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 86 ), ExtResource( 86 ), ExtResource( 84 ), ExtResource( 89 ), ExtResource( 82 ), ExtResource( 82 ), ExtResource( 87 ), ExtResource( 88 ) ],
+"frames": [ ExtResource( 85 ), ExtResource( 85 ), ExtResource( 85 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 86 ), ExtResource( 84 ), ExtResource( 89 ), ExtResource( 82 ), ExtResource( 87 ), ExtResource( 88 ) ],
 "loop": true,
 "name": "UpwardSlash",
 "speed": 5.0
@@ -317,7 +317,7 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[node name="paladin" instance=ExtResource( 1 )]
+[node name="Paladin" instance=ExtResource( 1 )]
 material = SubResource( 1 )
 character_portrait = ExtResource( 80 )
 
@@ -334,21 +334,20 @@ apply_forces = true
 apply_fric = true
 apply_grav = true
 sprite_animation = "UpwardSlash"
-anim_length = 10
+anim_length = 32
 enter_force_dir_x = "1.0"
 enter_force_speed = "5.0"
 title = "Upward Slash"
 type = 1
 button_texture = ExtResource( 83 )
-iasa_at = 9
+iasa_at = 22
 self_hit_cancellable = false
 self_interruptable = false
 interrupt_from_string = "Grounded
-GroundedAttack
-Aerial
-AerialAttack"
-interrupt_into_string = "Grounded
-Aerial"
+GroundedAttack"
+interrupt_into_string = "Aerial"
+hit_cancel_into_string = "Aerial"
+GROUNDED_LIFT = "-10.0"
 
 [node name="Hitbox1" type="Node2D" parent="StateMachine/UpwardSlash" index="0"]
 z_index = 1000
@@ -357,27 +356,49 @@ x = 29
 y = -23
 width = 11
 height = 23
-damage = 50
+damage = 90
 victim_hitlag = 10
-dir_x = "-0.3"
-dir_y = "-0.5"
+dir_x = "0.2"
+dir_y = "-0.7"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
-start_tick = 5
-active_ticks = 2
+start_tick = 6
+active_ticks = 3
 
-[node name="Hitbox2" type="Node2D" parent="StateMachine/UpwardSlash" index="1"]
+[node name="UpwardSlashAir" type="Node2D" parent="StateMachine" index="37"]
+script = ExtResource( 81 )
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "UpwardSlash"
+anim_length = 32
+enter_force_dir_x = "1.0"
+enter_force_speed = "5.0"
+title = "Upward Slash"
+type = 1
+button_texture = ExtResource( 83 )
+air_type = 1
+iasa_at = 22
+self_hit_cancellable = false
+self_interruptable = false
+interrupt_from_string = "Aerial
+AerialAttack"
+interrupt_into_string = "Aerial"
+hit_cancel_into_string = "Aerial"
+GROUNDED_LIFT = "-10.0"
+
+[node name="Hitbox1" type="Node2D" parent="StateMachine/UpwardSlashAir" index="0"]
 z_index = 1000
 script = ExtResource( 90 )
-x = 20
-y = -42
-width = 10
-height = 12
-damage = 50
+x = 29
+y = -23
+width = 11
+height = 23
+damage = 90
 victim_hitlag = 10
-dir_x = "-0.3"
-dir_y = "-0.5"
+dir_x = "0.2"
+dir_y = "-0.7"
 knockback = "5.0"
 grounded_hit_state = "HurtAerial"
-start_tick = 8
-active_ticks = 1
+start_tick = 6
+active_ticks = 3
