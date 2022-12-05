@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/BaseChar.gdshader" type="Shader" id=2]
@@ -90,6 +90,12 @@
 [ext_resource path="res://characters/paladin/sprites/paladin_UpwardSlash7.png" type="Texture" id=88]
 [ext_resource path="res://characters/paladin/sprites/paladin_UpwardSlash4.png" type="Texture" id=89]
 [ext_resource path="res://mechanics/Hitbox.gd" type="Script" id=90]
+[ext_resource path="res://characters/paladin/states/Slash1.gd" type="Script" id=91]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashOne1.png" type="Texture" id=92]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashOne2.png" type="Texture" id=93]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashOne4.png" type="Texture" id=94]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashOne5.png" type="Texture" id=95]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashOne3.png" type="Texture" id=96]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -296,6 +302,11 @@ animations = [ {
 "name": "RollForward",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 92 ), ExtResource( 92 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 93 ), ExtResource( 93 ), ExtResource( 96 ), ExtResource( 96 ), ExtResource( 94 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 95 ) ],
+"loop": true,
+"name": "SlashOne",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 61 ) ],
 "loop": true,
 "name": "ThrowTech",
@@ -319,13 +330,14 @@ animations = [ {
 
 [node name="Paladin" instance=ExtResource( 1 )]
 material = SubResource( 1 )
+max_fall_speed = "13"
 character_portrait = ExtResource( 80 )
 
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 2 )
 frames = SubResource( 3 )
-animation = "Wait"
-frame = 0
+animation = "SlashOne"
+frame = 7
 
 [node name="UpwardSlash" type="Node2D" parent="StateMachine" index="36"]
 script = ExtResource( 81 )
@@ -359,10 +371,10 @@ height = 23
 damage = 90
 victim_hitlag = 10
 dir_x = "0.2"
-dir_y = "-0.7"
+dir_y = "-0.3"
 grounded_hit_state = "HurtAerial"
 start_tick = 6
-active_ticks = 3
+active_ticks = 4
 
 [node name="UpwardSlashAir" type="Node2D" parent="StateMachine" index="37"]
 script = ExtResource( 81 )
@@ -397,7 +409,69 @@ height = 23
 damage = 90
 victim_hitlag = 10
 dir_x = "0.2"
-dir_y = "-0.7"
+dir_y = "-0.3"
 grounded_hit_state = "HurtAerial"
 start_tick = 6
-active_ticks = 3
+active_ticks = 4
+
+[node name="Slash1" type="Node2D" parent="StateMachine" index="38"]
+script = ExtResource( 91 )
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "SlashOne"
+anim_length = 38
+enter_force_dir_x = "1.0"
+enter_force_speed = "10.0"
+title = "Slash (1)"
+type = 1
+air_type = 2
+iasa_at = 10
+interruptible_on_opponent_turn = true
+interrupt_from_string = "Grounded
+GroundedAttack
+Aerial
+AerialAttack"
+interrupt_into_string = "SlashTwo"
+hit_cancel_into_string = "SlashTwo"
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/Slash1" index="0"]
+z_index = 1000
+script = ExtResource( 90 )
+x = 31
+y = -15
+width = 33
+height = 10
+damage = 40
+knockback = "2.0"
+start_tick = 8
+active_ticks = 4
+
+[node name="Slash2" type="Node2D" parent="StateMachine" index="39"]
+script = ExtResource( 91 )
+apply_forces = true
+apply_fric = true
+apply_grav = true
+sprite_animation = "SlashOne"
+anim_length = 38
+enter_force_dir_x = "1.0"
+enter_force_speed = "10.0"
+title = "Slash (2)"
+type = 1
+air_type = 2
+iasa_at = 10
+interruptible_on_opponent_turn = true
+interrupt_from_string = "SlashTwo"
+interrupt_into_string = "SlashThree"
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/Slash2" index="0"]
+z_index = 1000
+script = ExtResource( 90 )
+x = 31
+y = -15
+width = 33
+height = 10
+damage = 40
+knockback = "2.0"
+start_tick = 8
+active_ticks = 4
