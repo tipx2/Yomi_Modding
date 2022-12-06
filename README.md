@@ -2,12 +2,12 @@
  Modding directory for Yomi Hustle
 
 * decompiled yomi hustle
- the 0.3.4 release of yomi hustle, decompiled
+    the 0.3.4 release of yomi hustle, decompiled
 * godot decompiler
- https://github.com/bruvzg/gdsdecomp
+    https://github.com/bruvzg/gdsdecomp
 * godot ver
- certain branch of godot 3.5.1 that allows for modding without engine errors
+    certain branch of godot 3.5.1 that allows for modding without engine errors
 * yomi-hustle-0-3-4-char-loader
- the release 0.3.4 exe of the game with the character loader mod to test mods with
+    the release 0.3.4 exe of the game with the character loader mod to test mods with
 * aseprite files
- aseprite animations/pixel art
+    aseprite animations/pixel art
