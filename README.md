@@ -12,9 +12,12 @@
 * aseprite files
     - aseprite animations/pixel art
 
-## Yomi Hustle: 
+## Yomi Hustle:
+
 https://store.steampowered.com/app/2212330/Yomi_Hustle/
+
 https://ivysly.itch.io/yomi-hustle
 
 ## Modding Discord:
+
 https://discord.gg/Fp6mCWhmsV
