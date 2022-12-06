@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=104 format=2]
 
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/BaseChar.gdshader" type="Shader" id=2]
@@ -96,6 +96,10 @@
 [ext_resource path="res://characters/paladin/sprites/paladin_SlashOne4.png" type="Texture" id=94]
 [ext_resource path="res://characters/paladin/sprites/paladin_SlashOne5.png" type="Texture" id=95]
 [ext_resource path="res://characters/paladin/sprites/paladin_SlashOne3.png" type="Texture" id=96]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashTwo2.png" type="Texture" id=98]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashTwo1.png" type="Texture" id=99]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashTwo4.png" type="Texture" id=100]
+[ext_resource path="res://characters/paladin/sprites/paladin_SlashTwo3.png" type="Texture" id=101]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -307,6 +311,11 @@ animations = [ {
 "name": "SlashOne",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 99 ), ExtResource( 99 ), ExtResource( 99 ), ExtResource( 98 ), ExtResource( 98 ), ExtResource( 98 ), ExtResource( 101 ), ExtResource( 101 ), ExtResource( 100 ), ExtResource( 100 ) ],
+"loop": true,
+"name": "SlashTwo",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 61 ) ],
 "loop": true,
 "name": "ThrowTech",
@@ -336,8 +345,8 @@ character_portrait = ExtResource( 80 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 2 )
 frames = SubResource( 3 )
-animation = "SlashOne"
-frame = 7
+animation = "SlashTwo"
+frame = 0
 
 [node name="UpwardSlash" type="Node2D" parent="StateMachine" index="36"]
 script = ExtResource( 81 )
@@ -346,8 +355,9 @@ apply_fric = true
 apply_grav = true
 sprite_animation = "UpwardSlash"
 anim_length = 32
-enter_force_dir_x = "1.0"
-enter_force_speed = "5.0"
+force_dir_x = "1.0"
+force_speed = "2.0"
+force_tick = 8
 title = "Upward Slash"
 type = 1
 button_texture = ExtResource( 83 )
@@ -358,7 +368,6 @@ interrupt_from_string = "Grounded
 GroundedAttack"
 interrupt_into_string = "Aerial"
 hit_cancel_into_string = "Aerial"
-GROUNDED_LIFT = "-10.0"
 AERIAL_LIFT = "-5.0"
 
 [node name="Hitbox1" type="Node2D" parent="StateMachine/UpwardSlash" index="0"]
@@ -383,8 +392,9 @@ apply_fric = true
 apply_grav = true
 sprite_animation = "UpwardSlash"
 anim_length = 32
-enter_force_dir_x = "1.0"
-enter_force_speed = "5.0"
+force_dir_x = "1.0"
+force_speed = "5.0"
+force_tick = 8
 title = "Upward Slash"
 type = 1
 button_texture = ExtResource( 83 )
@@ -396,7 +406,6 @@ interrupt_from_string = "Aerial
 AerialAttack"
 interrupt_into_string = "Aerial"
 hit_cancel_into_string = "Aerial"
-GROUNDED_LIFT = "-10.0"
 AERIAL_LIFT = "-5.0"
 
 [node name="Hitbox1" type="Node2D" parent="StateMachine/UpwardSlashAir" index="0"]
@@ -426,7 +435,7 @@ enter_force_speed = "10.0"
 title = "Slash (1)"
 type = 1
 air_type = 2
-iasa_at = 10
+iasa_at = 22
 interruptible_on_opponent_turn = true
 interrupt_from_string = "Grounded
 GroundedAttack
@@ -452,10 +461,10 @@ script = ExtResource( 91 )
 apply_forces = true
 apply_fric = true
 apply_grav = true
-sprite_animation = "SlashOne"
+sprite_animation = "SlashTwo"
 anim_length = 38
 enter_force_dir_x = "1.0"
-enter_force_speed = "10.0"
+enter_force_speed = "5.0"
 title = "Slash (2)"
 type = 1
 air_type = 2
