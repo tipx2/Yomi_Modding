@@ -348,6 +348,20 @@ frames = SubResource( 3 )
 animation = "SlashTwo"
 frame = 0
 
+[node name="CollisionBox" parent="." index="2"]
+y = -18
+height = 18
+
+[node name="Hurtbox" parent="." index="3"]
+y = -18
+height = 18
+
+[node name="Hitbox" parent="StateMachine/Burst" index="0"]
+y = -21
+
+[node name="Hitbox" parent="StateMachine/OffensiveBurst" index="0"]
+y = -21
+
 [node name="UpwardSlash" type="Node2D" parent="StateMachine" index="36"]
 script = ExtResource( 81 )
 apply_forces = true
